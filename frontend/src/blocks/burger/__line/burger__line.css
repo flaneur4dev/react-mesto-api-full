@@ -1,0 +1,15 @@
+.burger__line {
+  height: 3px;
+  margin-bottom: 6px;
+  background: #fff;
+  transform-origin: left;
+  transition: .3s;
+}
+
+.burger__line:nth-child(2) {
+  transform-origin: center
+}
+
+.burger__line:last-child {
+  margin-bottom: 0;
+}

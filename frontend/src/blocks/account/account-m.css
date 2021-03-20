@@ -1,0 +1,13 @@
+.account-m {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: -138px;
+  padding: 40px 0;
+  transition: .3s ;
+}
+
+@media screen and (min-width: 471px) {
+  .account-m {
+    display: none;
+  }
+}

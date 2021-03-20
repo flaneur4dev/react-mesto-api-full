@@ -1,0 +1,12 @@
+.account__email {
+  margin: 0 24px 0 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 470px) {
+  .account__email {
+    margin: 0 0 18px 0;
+    text-align: center;
+  }
+}

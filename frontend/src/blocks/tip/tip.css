@@ -1,0 +1,8 @@
+.tip {
+  position: absolute;
+  padding: 5px;
+  color: #fff;
+  background-color: #252525;
+  border-radius: 2px;
+  font-size: 12px;
+}

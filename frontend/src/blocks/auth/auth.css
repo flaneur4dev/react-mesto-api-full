@@ -1,0 +1,19 @@
+.auth {
+  width: 88%;
+  height: calc(100vh - 123px);
+  max-width: 358px;
+  max-height: 650px;
+  margin: auto;
+  padding: 60px 0 80px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 470px) {
+  .auth {
+    height: calc(100vh - 87px);
+    padding: 40px 0;
+  }
+}

@@ -1,0 +1,12 @@
+.burger__line_open {
+  width: 26px;
+  transform: rotate(45deg)
+}
+
+.burger__line_open:nth-child(2) {
+  transform: scaleX(0)
+}
+
+.burger__line_open:last-child {
+  transform: rotate(-45deg)
+}

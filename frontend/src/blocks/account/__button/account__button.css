@@ -1,0 +1,23 @@
+.account__button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .account__button {
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  .account__button:hover {
+    opacity: .6;
+  }
+}
