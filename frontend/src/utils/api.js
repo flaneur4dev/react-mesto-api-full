@@ -63,6 +63,7 @@ class Api {
 
 export const api = new Api(
   {
+    // baseUrl: 'http://localhost:5000',
     baseUrl: 'https://api.happytravels.nomoredomains.icu',
     headers: {
       'Accept': 'application/json',

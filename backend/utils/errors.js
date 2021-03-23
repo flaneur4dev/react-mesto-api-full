@@ -1,4 +1,4 @@
-const { errorMessage } = require('../utils/utils');
+const { errorMessage } = require('./utils');
 
 class InputDataError extends Error {
   constructor(message = errorMessage['400']) {
@@ -28,4 +28,6 @@ class NotFoundError extends Error {
   }
 }
 
-module.exports = { InputDataError, AuthenticationError, AuthorizationError, NotFoundError }
+module.exports = {
+  InputDataError, AuthenticationError, AuthorizationError, NotFoundError,
+};

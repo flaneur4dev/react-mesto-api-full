@@ -9,7 +9,7 @@ const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const { errorMessage, authJoi } = require('./utils/utils');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 5000 } = process.env;
 const app = express();
 
 require('dotenv').config();
@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
-	useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 app.use(express.json());
@@ -29,26 +29,27 @@ app.disable('x-powered-by');
 
 app.use((req, res, next) => {
   res.set({
+    // 'Access-Control-Allow-Origin': 'http://localhost:3000',
     'Access-Control-Allow-Origin': 'https://happytravels.nomoredomains.icu',
     'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
     'Access-Control-Allow-Credentials': true,
     'Content-Security-Policy': 'default-src "self"; img-src *',
-    'Referrer-Policy': 'no-referrer'
+    'Referrer-Policy': 'no-referrer',
   });
-  next()
-})
+  next();
+});
 
 app.options('*', (req, res) => res.status(200).end());
 
-//crash-test
+// crash-test
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
 
-app.post('/signup', celebrate(authJoi), createUser); 
+app.post('/signup', celebrate(authJoi), createUser);
 app.post('/signin', celebrate(authJoi), login);
 app.get('/signout', auth, logout);
 
@@ -62,7 +63,9 @@ app.use(errorLogger);
 app.use(errors());
 
 app.use((err, req, res, next) => {
-  let { statusCode, name, message, code } = err;
+  let {
+    statusCode, name, message, code,
+  } = err;
 
   const isValidationError = /(MongoError|ValidationError)/.test(name);
   const isCastingError = /CastError/.test(name);
@@ -73,12 +76,12 @@ app.use((err, req, res, next) => {
   if (isCastingError) message = errorMessage['404'];
   if (code === 11000) {
     statusCode = 409;
-    message = errorMessage[statusCode]
-  };
-  
+    message = errorMessage[statusCode];
+  }
+
   res
     .status(statusCode)
-    .send({ message: statusCode === 500 ? errorMessage['500'] : message })
+    .send({ message: statusCode === 500 ? errorMessage['500'] : message });
 });
 
-app.listen(PORT, () => console.log(`App listening on port ${PORT}...`))
+app.listen(PORT, () => console.log(`App listening on port ${PORT}...`));
